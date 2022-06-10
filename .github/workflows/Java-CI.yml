@@ -5,6 +5,8 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./mancala-uitwerking/uitwerking-mancala-java/
     
     steps:
       - uses: actions/checkout@v2
