@@ -19,8 +19,14 @@ jobs:
         with:
           name: Package
           path: build/libs
-      - name: Setup and execute Gradle 'test' task
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: test
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Unit-Test with Gradle
+        uses: actions/download-artifact@v3
+          with:
+            name: Package
+        run: gradle test -i
 
