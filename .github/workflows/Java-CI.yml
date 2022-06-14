@@ -24,10 +24,17 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Get Gradle Build
-        uses: actions/download-artifact@v3
+      - uses: actions/checkout@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+          cache: gradle
+      - name: Gradle Unit-Test
+        run: gradle test 
+      - uses: actions/upload-artifact@v3
         with:
           name: Package
-      - name: Gradle Unit-Test
-        run: gradle test -i
+          path: build/libs
 
