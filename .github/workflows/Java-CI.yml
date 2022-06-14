@@ -24,9 +24,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Unit-Test with Gradle
+      - name: Get Gradle Build
         uses: actions/download-artifact@v3
         with:
           name: Package
+      - name: Gradle Unit-Test
         run: gradle test -i
 
