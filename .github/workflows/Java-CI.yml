@@ -31,7 +31,7 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
           cache: gradle
-      - name: Gradle Unit-Test
+      - name: Gradle Unit Test
         run: gradle test 
 
   checkstyle:
