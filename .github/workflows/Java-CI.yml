@@ -33,10 +33,6 @@ jobs:
           cache: gradle
       - name: Gradle Unit-Test
         run: gradle test 
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Test
-          path: build/libs
 
   checkstyle:
     needs: build
