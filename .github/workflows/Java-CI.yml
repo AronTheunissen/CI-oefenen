@@ -46,7 +46,7 @@ jobs:
           distribution: 'adopt'
           cache: gradle
       - name: Run Checkstyle on Main
-        run: gradle checkstyleMain
+        run: gradle checkstyleMain --stacktrace
       - name: Run Checkstyle on Test
         run: gradle checkstyleTest
 
