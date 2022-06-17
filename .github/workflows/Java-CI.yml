@@ -45,7 +45,9 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
           cache: gradle
-      - name: Run Checkstyle with filter
-        uses: iwata-n/actions-checkstyle@v1.0.0
+      - name: Run Checkstyle on Main
+        run: gradle checkstyleMain
+      - name: Run Checkstyle on Test
+        run: gradle checkstyleTest
 
 

@@ -21,3 +21,44 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
+test {
+    // For running our tests, use the test runner provided by JUnit.
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.enabled = true
+        csv.enabled = true
+        html.enabled = true
+    }
+}
+
+jacocoTestCoverageVerification {
+    dependsOn jacocoTestReport
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.6
+            }
+        }
+    }
+}
+
+checkstyle {
+    configFile file("../config/checkstyle/checkstyle.xml")
+    configProperties.checkstyleSuppressionsPath = file("../config/checkstyle/suppressions.xml").absolutePath
+    maxErrors = 50
+}
+
+checkstyleMain {
+    source ='src/main/java'
+}
+
+checkstyleTest {
+    source ='src/test/java'
+}
+
+
