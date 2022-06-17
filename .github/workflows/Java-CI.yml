@@ -14,7 +14,7 @@ jobs:
           distribution: 'adopt'
           cache: gradle
       - name: Build with Gradle
-        run: gradle build
+        run: gradle build --stacktrace
       - uses: actions/upload-artifact@v3
         with:
           name: Package
@@ -46,7 +46,7 @@ jobs:
           distribution: 'adopt'
           cache: gradle
       - name: Run Checkstyle on Main
-        run: gradle checkstyleMain --stacktrace
+        run: gradle checkstyleMain
       - name: Run Checkstyle on Test
         run: gradle checkstyleTest
 
