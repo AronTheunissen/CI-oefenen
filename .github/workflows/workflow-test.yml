@@ -1,3 +1,5 @@
+name: Test if Java CI passed
+
 on:
   workflow_run:
     workflows: [Java CI]
