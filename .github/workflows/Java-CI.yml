@@ -51,13 +51,13 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: mainstyle-log-file
-          path: main-output.log
+          path: build/reports/checkstyle/main.xml
       - name: Run Checkstyle on Test
         run: gradle checkstyleTest
       - name: Upload checkstyle Test artifact
         uses: actions/upload-artifact@v3
         with:
           name: teststyle-log-file
-          path: test-output.log
+          path: build/reports/checkstyle/test.xml
 
 
