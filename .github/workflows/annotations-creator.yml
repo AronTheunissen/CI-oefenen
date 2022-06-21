@@ -3,8 +3,7 @@ name: Create Annotations
 on:
   workflow_run:
     workflows: [Java CI]
-    types:
-      - completed
+    types: [completed]
 
 jobs:
   build:
