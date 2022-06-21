@@ -32,7 +32,7 @@ jobs:
           distribution: 'adopt'
           cache: gradle
       - name: Gradle Unit Test
-        run: gradle test 
+        run: gradle test
 
   checkstyle:
     needs: build
@@ -47,9 +47,17 @@ jobs:
           cache: gradle
       - name: Run Checkstyle on Main
         run: gradle checkstyleMain
+      - name: Upload checkstyle Main artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: mainstyle-log-file
+          path: main-output.log
       - name: Run Checkstyle on Test
         run: gradle checkstyleTest
-      - name: Make Checkstyle Annotation
-        uses: kiancross/checkstyle-annotations-action@v1
+      - name: Upload checkstyle Test artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: teststyle-log-file
+          path: test-output.log
 
 
