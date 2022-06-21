@@ -49,7 +49,7 @@ jobs:
         run: gradle checkstyleMain
       - name: Run Checkstyle on Test
         run: gradle checkstyleTest
-      - name: Make Checkstyle Annotations
+      - name: Make Checkstyle Annotation
         uses: kiancross/checkstyle-annotations-action@v1
 
 
