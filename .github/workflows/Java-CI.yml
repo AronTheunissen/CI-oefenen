@@ -59,5 +59,7 @@ jobs:
         with:
           name: teststyle-log-file
           path: build/reports/checkstyle/test.xml
+      - name: Make the annotations
+        uses: kiancross/checkstyle-annotations-action@v1
 
 
