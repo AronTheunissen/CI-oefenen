@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'maven:3.8.6-openjdk-11' } }
+    agent { docker { image 'gradle:7.4.1-jdk17-alpine' } }
     stages {
         stage('build') {
             steps {
