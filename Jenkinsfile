@@ -1,10 +1,39 @@
 pipeline {
-    agent { docker { image 'node:16.13.1-alpine' } }
-    stages {
-        stage('build') {
-            steps {
-                sh 'node --version'
-            }
-        }
+  agent any
+
+  stages {
+    stage("Build") {
+      steps {
+        sh 'mvn -v'
+      }
     }
+
+    stage("Testing") {
+      parallel {
+        stage("Unit Tests") {
+          agent { docker 'openjdk:7-jdk-alpine' }
+          steps {
+            sh 'java -version'
+          }
+        }
+        stage("Functional Tests") {
+          agent { docker 'openjdk:8-jdk-alpine' }
+          steps {
+            sh 'java -version'
+          }
+        }
+        stage("Integration Tests") {
+          steps {
+            sh 'java -version'
+          }
+        }
+      }
+    }
+
+    stage("Deploy") {
+      steps {
+        echo "Deploy!"
+      }
+    }
+  }
 }
