@@ -1,12 +1,15 @@
 pipeline {
-    agent {
-        label 'linux'
-        docker { image 'golang:1.17.11-alpine' } }
-    stages {
-        stage('build') {
-            steps {
-                sh 'go version'
-            }
-        }
-    }
-}
+    agent none
+   stages {     
+    stage('Maven Version') {
+      agent {         
+       docker {          
+         image 'maven:3.8.6-jdk-11'         
+     }       
+  }       
+  steps {
+       sh 'mvn --version'
+       }
+     }
+   }
+ }
