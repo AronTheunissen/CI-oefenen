@@ -1,6 +1,10 @@
 pipeline {
     agent {
-        label 'docker' docker 'golang:1.17.11-alpine' }
+        docker {
+        image 'maven:3-alpine'
+        label 'docker'
+        }
+    }
     stages {
         stage('build') {
             steps {
